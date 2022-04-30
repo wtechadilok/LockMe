@@ -81,6 +81,19 @@ public class Directory {
         }
     }
 
+    /**
+     * Search for the file with the specified filename.
+     * @param filename The filename to search for.
+     * @return The file with the matching filename or null if not found.
+     */
+    public File searchFile(String filename) {
+        for (File f : files){
+        if(f.getName().equals(filename)){
+            return f;
+        }
+        }
+        return null;
+    }
 
     public static void main(String[] args) {
         Directory d = new Directory("../Storage/");
@@ -99,5 +112,11 @@ public class Directory {
         System.out.println("------------------------");
         System.out.println("Print all files in sorting order.");
         d.printFiles();
+        System.out.println("------------------------");
+        System.out.println("Search for an existing file: Test1.txt.");
+        System.out.println(d.searchFile("Test1.txt"));
+        System.out.println("------------------------");
+        System.out.println("Search for a non existing file.");    
+        System.out.println(d.searchFile("Test5.txt"));
     }
 }
