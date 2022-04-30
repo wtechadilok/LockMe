@@ -40,11 +40,11 @@ public class Directory {
     /**
      * Add the file to the current directory
      *
-     * @param fileName the name of the file to add
+     * @param filename the name of the file to add
      * @return True if file is new and successfully added. False otherwise.
      */
-    public boolean addFile(String fileName) {
-        Path path = FileSystems.getDefault().getPath(directoryName + fileName).toAbsolutePath();
+    public boolean addFile(String filename) {
+        Path path = FileSystems.getDefault().getPath(directoryName + filename).toAbsolutePath();
         File f = path.toFile();
         try {
             if (f.createNewFile()) {
@@ -57,10 +57,30 @@ public class Directory {
                 return false;
             }
         } catch (IOException e) {
-            System.out.println("IO exception occurred.");
+            System.out.println("IOException occurred.");
             return false;
         }
     }
+
+    /**
+     * Delete the file specified by the filename from the current directory.
+     *
+     * @param filename the name of the file to delete
+     * @return True if file is existing and successfully deleted. False otherwise.
+     */
+    public boolean deleteFile(String filename) {
+        Path path = FileSystems.getDefault().getPath(directoryName + filename).toAbsolutePath();
+        File f = path.toFile();
+        if (f.delete()) {
+            files.remove(f);
+            System.out.println("File successfully deleted.");
+            return true;
+        } else {
+            System.out.println("File failed to delete. Check your spelling.");
+            return false;
+        }
+    }
+
 
     public static void main(String[] args) {
         Directory d = new Directory("../Storage/");
@@ -70,6 +90,12 @@ public class Directory {
         System.out.println("------------------------");
         System.out.println("Adding a new file.");
         d.addFile("Test3.txt");
+        System.out.println("------------------------");
+        System.out.println("Print all files in sorting order.");
+        d.printFiles();
+        System.out.println("------------------------");
+        System.out.println("Delete a file.");
+        d.deleteFile("Test2.txt");
         System.out.println("------------------------");
         System.out.println("Print all files in sorting order.");
         d.printFiles();
