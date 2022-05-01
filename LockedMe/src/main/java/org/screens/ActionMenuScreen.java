@@ -8,6 +8,7 @@ public class ActionMenuScreen implements Screen {
         System.out.println("2. Delete a file");
         System.out.println("3. Search a file");
         System.out.println("4. Go back");
+        System.out.print("Enter your option (1-4): ");
     }
 
     @Override

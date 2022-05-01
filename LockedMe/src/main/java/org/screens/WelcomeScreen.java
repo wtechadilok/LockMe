@@ -9,6 +9,7 @@ public class WelcomeScreen implements Screen {
         System.out.println("1. View file");
         System.out.println("2. See file actions");
         System.out.println("3. Close program");
+        System.out.print("Enter your option (1-3): ");
     }
 
     @Override
