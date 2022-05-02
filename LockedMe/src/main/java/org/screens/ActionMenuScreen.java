@@ -11,8 +11,4 @@ public class ActionMenuScreen implements Screen {
         System.out.print("Enter your option (1-4): ");
     }
 
-    @Override
-    public void processInput(int option) {
-
-    }
 }

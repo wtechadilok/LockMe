@@ -12,8 +12,4 @@ public class WelcomeScreen implements Screen {
         System.out.print("Enter your option (1-3): ");
     }
 
-    @Override
-    public void processInput(int option) {
-
-    }
 }
